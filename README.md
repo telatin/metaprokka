@@ -11,13 +11,13 @@ This repository contains the altered script and its documentation, after experim
 metaprokka --outdir annotation --prefix S01 contigs.fasta
 ```
 
-See the **[Wiki](https://github.com/telatin/metaprokka/wiki)** for more details.
+See the **[:book: Wiki](https://github.com/telatin/metaprokka/wiki)** for more details.
 
 ### Changes
 
 MetaProkka will produce less output files (to save space in big projects) and will skip some steps (notably tbl2asn).
 
-See **[Changes](https://github.com/telatin/metaprokka/wiki/Changes)** for more details.
+See **[:scroll: Changes](https://github.com/telatin/metaprokka/wiki/Changes)** for more details.
 
 ### Citation
 
