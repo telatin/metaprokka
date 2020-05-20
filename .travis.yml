@@ -11,9 +11,9 @@ install:
     - "git clone https://www.github.com/tseemann/prokka"
     - "mv prokka/bin/* $PWD/bin"
     - "export PATH=$PWD/bin:$PATH"
-
 script:
     - "prokka --version"
+    - "prokka --setupdb"
     - "metaprokka --version"
     - "metaprokka --outdir asm --prefix asm --meta test/plasmid.fna"
     - "grep '>' asm/asm.faa"
