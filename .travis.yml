@@ -1,0 +1,19 @@
+dist: bionic
+
+addons:
+    apt:
+        packages:
+            - libdb-dev
+            - libbio-perl-perl
+            - libxml-simple-perl
+
+install:
+    - "git clone https://www.github.com/tseemann/prokka"
+    - "mv prokka/bin/* $PWD/bin"
+    - "export PATH=$PWD/bin:$PATH"
+
+script:
+    - "prokka --version"
+    - "metaprokka --version"
+    - "metaprokka --outdir asm --prefix asm --meta test/plasmid.fna"
+    - "grep '>' asm/asm.faa"
