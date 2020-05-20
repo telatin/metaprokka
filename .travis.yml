@@ -9,8 +9,8 @@ addons:
 
 install:
     - "git clone https://www.github.com/tseemann/prokka"
-    - "mv prokka/bin/* $PWD/bin"
-    - "export PATH=$PWD/bin:$PATH"
+    - "mv bin/* prokka/bin"
+    - "export PATH=$PWD/prokka/bin:$PATH"
 script:
     - "prokka --version"
     - "prokka --setupdb"
