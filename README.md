@@ -1,6 +1,8 @@
 # 🧫 ♊  MetaProkka
 **Modified version of Prokka by Torsten Seemann tailored for metagenome assemblies**
 
+[![Build Status](https://travis-ci.org/telatin/metaprokka.svg?branch=master)](https://travis-ci.org/telatin/metaprokka)
+
 ### Preamble
 
 As a long time [Prokka](https://github.com/tseemann/prokka) user, I made some changes for the specific use for metagenomes. **Prokka**'s author will probably release a better replacement (called Mokka) in the future, so keep al look [here](https://github.com/tseemann/mokka).
