@@ -40,7 +40,8 @@ my $EXE = $FindBin::RealScript;
 my $SOURCE_VERSION = "1.14.6";
 my $META_VERSION = "1";
 my $VERSION = $SOURCE_VERSION.'_'.$META_VERSION;
-my $AUTHOR = 'Torsten Seemann <torsten.seemann@gmail.com>';
+my $AUTHOR = 'Andrea Telatin <andrea.telatin@gmail.com>';
+my $ORIGINAL_AUTHOR = 'Torsten Seemann <torsten.seemann@gmail.com>';
 my $URL = 'https://github.com/telatin/metaprokka';
 my $PROKKA_PMID = '24642063';
 my $PROKKA_DOI = '10.1093/bioinformatics/btu153';
@@ -243,9 +244,9 @@ $notrna = ! $dotrna;
 # welcome message
 
 msg( {  title => "$EXE $VERSION", color => 'blue' } );
-msg("Written by $AUTHOR (homepage: $URL)",
-     { notimestamp => 1, color => 'reset'});
-msg("Based on Prokka by $AUTHOR", 
+#msg("Written by $AUTHOR (homepage: $URL)",
+#     { notimestamp => 1, color => 'reset'});
+msg("Based on Prokka by $ORIGINAL_AUTHOR", 
      { notimestamp => 1, color => 'reset'});
 
 
