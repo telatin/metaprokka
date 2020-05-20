@@ -1,5 +1,5 @@
 # 🧫 ♊ MetaProkka
-Modified version of Prokka by Torsten Seemann tailored for metagenome assemblies
+**Modified version of Prokka by Torsten Seemann tailored for metagenome assemblies**
 
 ### Preamble
 
