@@ -22,7 +22,8 @@ See the **[:book: Wiki](https://github.com/telatin/metaprokka/wiki)** for more d
 If you already have Prokka, you can manually install:
 
 ```
-wget -O "$(dirname $(command -v prokka))/metaprokka" "https://github.com/telatin/metaprokka/blob/master/bin/metaprokka"
+wget -O "$(dirname $(command -v prokka))/metaprokka" \
+  "https://github.com/telatin/metaprokka/blob/master/bin/metaprokka"
 ```
 
 Otherwise you can install _metaprokka_ (and prokka) via Miniconda:
