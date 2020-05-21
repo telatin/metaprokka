@@ -1,11 +1,9 @@
 # 🧫 ♊  MetaProkka
 **Modified version of Prokka by Torsten Seemann tailored for metagenome assemblies**
 
-[![Build Status](https://travis-ci.org/telatin/metaprokka.svg?branch=master)](https://travis-ci.org/telatin/metaprokka)
-
-[![Install with Conda](https://anaconda.org/bioconda/metaprokka/badges/installer/conda.svg)](https://bioconda.github.io/recipes/metaprokka/README.html)
-
-[![Downloads](https://anaconda.org/bioconda/metaprokka/badges/downloads.svg)](https://bioconda.github.io/recipes/metaprokka/README.html)
+  [![Build Status](https://travis-ci.org/telatin/metaprokka.svg?branch=master)](https://travis-ci.org/telatin/metaprokka)
+  [![Install with Conda](https://anaconda.org/bioconda/metaprokka/badges/installer/conda.svg)](https://bioconda.github.io/recipes/metaprokka/README.html)
+  [![Downloads](https://anaconda.org/bioconda/metaprokka/badges/downloads.svg)](https://bioconda.github.io/recipes/metaprokka/README.html)
 
 ### Preamble
 
