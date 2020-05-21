@@ -46,6 +46,8 @@ See **[:scroll: Changes](https://github.com/telatin/metaprokka/wiki/Changes)** f
 
 [![Colored output](https://raw.githubusercontent.com/telatin/metaprokka/master/docs/log.png)](https://github.com/telatin/metaprokka/wiki/Changes)
 
+MetaProkka has a nice colored output, too.
+
 ### Citation
 
 This tool is a modified version of Prokka, so if you use it please cite:
