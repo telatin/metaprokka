@@ -3,6 +3,10 @@
 
 [![Build Status](https://travis-ci.org/telatin/metaprokka.svg?branch=master)](https://travis-ci.org/telatin/metaprokka)
 
+[![Install with Conda](https://anaconda.org/bioconda/metaprokka/badges/installer/conda.svg)](https://bioconda.github.io/recipes/metaprokka/README.html)
+
+[![Downloads](https://anaconda.org/bioconda/metaprokka/badges/downloads.svg)](https://bioconda.github.io/recipes/metaprokka/README.html)
+
 ### Preamble
 
 As a long time [Prokka](https://github.com/tseemann/prokka) user, I made some changes for the specific use for metagenomes. **Prokka**'s author will probably release a better replacement (called Mokka) in the future, so keep al look [here](https://github.com/tseemann/mokka).
