@@ -17,6 +17,26 @@ metaprokka --outdir annotation --prefix S01 contigs.fasta
 
 See the **[:book: Wiki](https://github.com/telatin/metaprokka/wiki)** for more details.
 
+### Installation
+
+If you already have Prokka, you can manually install:
+
+```
+wget -O "$(dirname $(command -v prokka))/metaprokka" "https://github.com/telatin/metaprokka/blob/master/bin/metaprokka"
+```
+
+Otherwise you can install _metaprokka_ (and prokka) via Miniconda:
+
+```
+conda install -c bioconda metaprokka
+```
+
+Via Miniconda, creating a new environment:
+
+```
+conda create -n metaprokka metaprokka
+```
+
 ### Changes
 
 MetaProkka will produce less output files (to save space in big projects) and will skip some steps (notably tbl2asn).
