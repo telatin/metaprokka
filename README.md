@@ -44,6 +44,8 @@ MetaProkka will produce less output files (to save space in big projects) and wi
 
 See **[:scroll: Changes](https://github.com/telatin/metaprokka/wiki/Changes)** for more details.
 
+[![Colored output](https://raw.githubusercontent.com/telatin/metaprokka/master/docs/log.png)](https://github.com/telatin/metaprokka/wiki/Changes)
+
 ### Citation
 
 This tool is a modified version of Prokka, so if you use it please cite:
