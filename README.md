@@ -19,7 +19,7 @@ See the **[:book: Wiki](https://github.com/telatin/metaprokka/wiki)** for more d
 
 ### Installation
 
-If you already have Prokka, you can manually install:
+If you already have Prokka (1.13+), you can manually install:
 
 ```
 wget -O "$(dirname $(command -v prokka))/metaprokka" \
