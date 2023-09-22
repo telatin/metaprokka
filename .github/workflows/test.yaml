@@ -46,6 +46,6 @@ jobs:
           mamba-version: "*"
       - name: Install requirements.
         run: mamba install -y prokka prodigal-gv "perl-fastx-reader>=1.11"
-      - name: Test Dadaist
+      - name: Test Prokka-GV
         run: bash test/test.sh
           
