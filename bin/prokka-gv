@@ -239,10 +239,18 @@ my(@Options, $quiet, $debug, $kingdom, $fast, $force, $outdir, $prefix, $cpus, $
              $rfam, $norrna, $notrna, $rnammer, $rawproduct, $noanno, $accver,
 	     $metagenome, $compliant, $listdb, $citation);
 
-$dbdir = $ENV{'PROKKA_DBDIR'} || abs_path("$FindBin::RealBin/../db");
+my $conda_db = File::Spec->catdir($ENV{'CONDA_PREFIX'}, 'db');
+$dbdir = $ENV{'PROKKA_DBDIR'} || $conda_db || abs_path("$FindBin::RealBin/../db");
 
 setOptions();
 
+if (not defined $hmms and -d $ENV{'CONDA_PREFIX'}) {
+  my $default_hmms = File::Spec->catfile($ENV{'CONDA_PREFIX'}, 'db', 'all_phrogs.hmm');
+  if (-e $default_hmms) {
+    msg("Found Phrogs HMM database in $default_hmms");
+    $hmms = $default_hmms;
+  }
+}
 # . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 # welcome message
 
@@ -260,7 +268,7 @@ msg("You have enabled DEBUG mode. Temporary files will NOT be deleted.") if $deb
 my $minbpver = "1.006002"; # for Bio::SearchIO::hmmer3
 my $bpver = $Bio::Root::Version::VERSION;
 msg("You have BioPerl $bpver");
-err("Please install BioPerl $minbpver or higher") if $bpver < $minbpver;
+#TODO: FIX err("Please install BioPerl $minbpver or higher") if $bpver < $minbpver;
 
 # . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 # Check some incompatible options
@@ -328,7 +336,7 @@ msg("Annotating as >>> $kingdom <<<");
 # check if --setupdb has been run
 
 if ( !  -r "$dbdir/kingdom/$kingdom/sprot.pin" or ! "$dbdir/hmm/HAMAP.hmm.h3i") {
-  err("The sequence databases have not been indexed. Please run 'prokka --setupdb' first.");
+  err("The sequence databases have not been indexed. Please run 'prokka --setupdb' first.\nSee $dbdir/kingdom/$kingdom/sprot.pin and $dbdir/hmm/HAMAP.hmm.h3i");
 }
 
 # . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 

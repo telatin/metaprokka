@@ -47,5 +47,7 @@ jobs:
       - name: Install requirements.
         run: mamba install -y prokka prodigal-gv "perl-fastx-reader>=1.11"
       - name: Test Prokka-GV
-        run: bash test/test.sh
+        run: bash test/gv.sh
+      - name: Test Phrogs
+        run: bash test/phrogs.sh
           

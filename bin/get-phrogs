@@ -6,18 +6,63 @@ use v5.12;
 use warnings;
 use Getopt::Long;
 use Pod::Usage;
-
-my $opt_outdir;
+use File::Spec;
+use Term::ANSIColor qw(:constants);
 my $opt_help;
 my $opt_verbose;
-
+my $conda_prefix = $ENV{CONDA_PREFIX} // './';
+my $opt_outdir = File::Spec->catdir($conda_prefix, 'db');
+my $phrogs_url   = 'http://warwick.s3.climb.ac.uk/ADM_share/all_phrogs.hmm.gz';
+my $opt_force;
 GetOptions(
     'o|output=s' => \$opt_outdir,
+    'u|url=s'    => \$phrogs_url,
+    'f|force'    => \$opt_force,
     'h|help'     => \$opt_help,
     'v|verbose'  => \$opt_verbose,
 ) or pod2usage(2);
 
+pod2usage(1) if $opt_help;
 
+say STDERR GREEN "Downloading Phrogs HMM", RESET if $opt_verbose;
+my $destination_file = File::Spec->catfile($opt_outdir, 'all_phrogs.hmm.gz');
+my $destination_uncompressed_file = File::Spec->catfile($opt_outdir, 'all_phrogs.hmm');
+if (! -d $opt_outdir) {
+    mkdir $opt_outdir or die "Cannot create output directory $opt_outdir: $!\n";
+}
+
+if (! -e $destination_file and not $opt_force) {
+    say STDERR "Destination: $destination_file" if $opt_verbose;
+    if (download_file_with_wget($phrogs_url, $destination_file)) {
+        say STDERR "Phrogs database downloaded successfully";
+    }
+}
+
+if (! -e $destination_uncompressed_file and not $opt_force) {
+    # Uncompress the database
+    my $command = qq(gunzip "$destination_file");
+    say STDERR "Running $command" if $opt_verbose;
+    system($command) == 0 or die "Cannot uncompress $destination_file: $!\n";
+}
+
+# hmmpress the file
+my $command = qq(hmmpress "$destination_uncompressed_file");
+say STDERR "Running $command" if $opt_verbose;
+system($command) == 0 or die "Cannot hmmpress $destination_uncompressed_file: $!\n";
+
+sub download_file_with_wget {
+    my ($url, $dest) = @_;
+    
+    my $cmd = qq(wget -q -O "$dest" "$url");
+    say STDERR "Running $cmd" if $opt_verbose;
+    system($cmd) == 0 or die "Cannot download $url: $!\n";
+    
+    if ($@) {
+        say STDERR "Cannot download $url: $@";
+        return;
+    }
+    return 1;
+}
 
 __END__
 
@@ -33,6 +78,19 @@ __END__
 
 Output directory where to download the Phrogs database.
 By default the Conda environment directory is used.
+
+=item B<-u, --url> C<URL>
+
+URL of the Phrogs database to download. 
+Default: L<http://warwick.s3.climb.ac.uk/ADM_share/all_phrogs.hmm.gz>
+
+=item B<-f, --force>
+
+Force download of the Phrogs database even if it already exists.
+
+=item B<-v, --verbose>
+
+Verbose output.
 
 =item B<--help>
 

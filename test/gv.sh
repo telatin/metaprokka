@@ -1,8 +1,10 @@
 #!/bin/bash
-prokka --setupdb
+set -euxo pipefail
+
+
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 BIN_DIR=$SCRIPT_DIR/../bin
-
+prokka --setupdb
 for GCODE in 11 4 15;
 do
     echo Testing genetic code: $GCODE
