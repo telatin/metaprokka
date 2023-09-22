@@ -1,55 +1,42 @@
-# 🧫 ♊  MetaProkka
-**Modified version of Prokka by Torsten Seemann tailored for metagenome assemblies**
+# 🧫 ♊  MetaProkka: a fork for prokka, optimised for bacteriophages and metagenomes/metaviromes
 
-  [![Build Status](https://travis-ci.org/telatin/metaprokka.svg?branch=master)](https://travis-ci.org/telatin/metaprokka)
-  [![Install with Conda](https://anaconda.org/bioconda/metaprokka/badges/installer/conda.svg)](https://bioconda.github.io/recipes/metaprokka/README.html)
-  [![Downloads](https://anaconda.org/bioconda/metaprokka/badges/downloads.svg)](https://bioconda.github.io/recipes/metaprokka/README.html)
+## Introduction
 
-### Preamble
+Whole genome annotation is the process of identifying features of interest
+in a set of genomic DNA sequences, and labelling them with useful
+information. Prokka is a software tool to annotate bacterial, archaeal and
+viral genomes quickly and produce standards-compliant output files.
 
-As a long time [Prokka](https://github.com/tseemann/prokka) user, I made some changes for the specific use for metagenomes. **Prokka**'s author will probably release a better replacement (called Mokka) in the future, so keep al look [here](https://github.com/tseemann/mokka).
-This repository contains the altered script and its documentation, after experimenting with [this fork](https://github.com/telatin/prokka).
+## Installation (WIP)
 
-### Usage
-```
-metaprokka --outdir annotation --prefix S01 contigs.fasta
-```
-
-See the **[:book: Wiki](https://github.com/telatin/metaprokka/wiki)** for more details.
-
-### Installation
-
-If you already have Prokka (1.13+), you can manually install:
+### 
+If you use [Conda](https://conda.io/docs/install/quick.html)
+you can use the [Bioconda channel](https://bioconda.github.io/):
 
 ```
-wget -O "$(dirname $(command -v prokka))/metaprokka" \
-  "https://github.com/telatin/metaprokka/blob/master/bin/metaprokka"
+conda create -n prokka-gv --only-deps -c bioconda prokka
+conda activate prokka-gv
+conda install -c bioconda prodigal-gv perl-fastx-reader
+export PATH=$PWD/bin/
 ```
 
-Otherwise you can install _metaprokka_ (and prokka) via Miniconda:
-
+## Usage
+Same as Prokka, but here's a simple example:
 ```
-conda install -c bioconda metaprokka
-```
-
-Via Miniconda, creating a new environment:
-
-```
-conda create -n metaprokka metaprokka
+prokka-gv --hmms all_phrogs.hmm --outdir OUT_DIR --prefix PREFIX --locustag LOCUSTAG input.fa --cpus x
 ```
 
-### Changes
+# Licence
 
-MetaProkka will produce less output files (to save space in big projects) and will skip some steps (notably tbl2asn).
-
-See **[:scroll: Changes](https://github.com/telatin/metaprokka/wiki/Changes)** for more details.
-
-[![Colored output](https://raw.githubusercontent.com/telatin/metaprokka/master/docs/log.png)](https://github.com/telatin/metaprokka/wiki/Changes)
-
-MetaProkka has a nice colored output, too.
+[GPL v3](https://raw.githubusercontent.com/tseemann/prokka/master/doc/LICENSE.Prokka)
 
 ### Citation
 
 This tool is a modified version of Prokka, so if you use it please cite:
 
 * Seemann T. **Prokka: rapid prokaryotic genome annotation**, Bioinformatics 2014 Jul 15;30(14):2068-9. [PMID:24642063](http://www.ncbi.nlm.nih.gov/pubmed/24642063)
+
+
+## Authors
+
+This fork is maintained by Ryan Cook [@RyanCookAMR](https://twitter.com/RyanCookAMR) & Andrea Telatin [@telatin](https://twitter.com/telatin)
