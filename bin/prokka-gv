@@ -243,15 +243,17 @@ my $conda_db = File::Spec->catdir($ENV{'CONDA_PREFIX'}, 'db');
 $dbdir = $ENV{'PROKKA_DBDIR'} || $conda_db || abs_path("$FindBin::RealBin/../db");
 
 setOptions();
-
+ 
 # Use phrogs HMM database if available (see: `get-phrogs`)
-if (not defined $hmms and -d $ENV{'CONDA_PREFIX'}) {
-  my $default_hmms = File::Spec->catfile($ENV{'CONDA_PREFIX'}, 'db', 'all_phrogs.hmm');
+if ('' eq $hmms and -d $dbdir) {
+  my $default_hmms = File::Spec->catfile($dbdir, 'all_phrogs.hmm');
   if (-e $default_hmms) {
     msg("Found Phrogs HMM database in $default_hmms");
     $hmms = $default_hmms;
   }
 }
+
+
 # . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 # welcome message
 

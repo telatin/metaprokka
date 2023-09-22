@@ -10,7 +10,7 @@ use File::Spec;
 use Term::ANSIColor qw(:constants);
 my $opt_help;
 my $opt_verbose;
-my $conda_prefix = $ENV{CONDA_PREFIX} // './';
+my $conda_prefix = $ENV{'CONDA_PREFIX'} // $ENV{'PROKKA_DBDIR'} // './';
 my $opt_outdir = File::Spec->catdir($conda_prefix, 'db');
 my $phrogs_url   = 'http://warwick.s3.climb.ac.uk/ADM_share/all_phrogs.hmm.gz';
 my $opt_force;
