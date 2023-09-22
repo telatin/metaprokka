@@ -244,6 +244,7 @@ $dbdir = $ENV{'PROKKA_DBDIR'} || $conda_db || abs_path("$FindBin::RealBin/../db"
 
 setOptions();
 
+# Use phrogs HMM database if available (see: `get-phrogs`)
 if (not defined $hmms and -d $ENV{'CONDA_PREFIX'}) {
   my $default_hmms = File::Spec->catfile($ENV{'CONDA_PREFIX'}, 'db', 'all_phrogs.hmm');
   if (-e $default_hmms) {
@@ -255,11 +256,8 @@ if (not defined $hmms and -d $ENV{'CONDA_PREFIX'}) {
 # welcome message
 
 msg("This is $EXE $VERSION");
-msg("Written by $AUTHOR");
 msg("Homepage is $URL");
 msg("Local time is $starttime");
-msg("You are", $ENV{USER} || 'not telling me who you are!');
-msg("Operating system is $OPSYS");
 msg("You have enabled DEBUG mode. Temporary files will NOT be deleted.") if $debug;
 
 # . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 

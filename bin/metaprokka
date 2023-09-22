@@ -235,8 +235,8 @@ my(@Options, $quiet, $debug, $kingdom, $fast, $force, $outdir, $prefix, $cpus, $
 	           $metagenome, $compliant, $listdb, $citation);
 
 die "notrna=$notrna" if ($notrna);
-$dbdir = $ENV{'PROKKA_DBDIR'} || abs_path("$FindBin::RealBin/../db");
-
+my $conda_db = File::Spec->catdir($ENV{'CONDA_PREFIX'}, 'db');
+$dbdir = $ENV{'PROKKA_DBDIR'} || $conda_db || abs_path("$FindBin::RealBin/../db");
 
 setOptions();
 $notrna = ! $dotrna;
