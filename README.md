@@ -1,5 +1,8 @@
 # 🧫 ♊  MetaProkka: a fork for prokka, optimised for bacteriophages and metagenomes/metaviromes
 
+[![MetaProkkaGV](https://github.com/telatin/metaprokka/actions/workflows/test.yaml/badge.svg)](https://github.com/telatin/metaprokka/actions/workflows/test.yaml)
+[![Bioconda Downloads](https://img.shields.io/conda/dn/bioconda/metaprokka.svg?style=flat)](https://bioconda.github.io/recipes/metaprokka/README.html)
+
 ## Introduction
 
 Whole genome annotation is the process of identifying features of interest
