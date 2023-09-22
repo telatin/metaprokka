@@ -1,0 +1,42 @@
+#!/usr/bin/env perl
+#ABSTRACT: Download Phrogs HMM database from Inphared
+#PODNAME: get-phrogs
+
+use v5.12;
+use warnings;
+use Getopt::Long;
+use Pod::Usage;
+
+my $opt_outdir;
+my $opt_help;
+my $opt_verbose;
+
+GetOptions(
+    'o|output=s' => \$opt_outdir,
+    'h|help'     => \$opt_help,
+    'v|verbose'  => \$opt_verbose,
+) or pod2usage(2);
+
+
+
+__END__
+
+=head1 SYNOPSIS
+
+  get-phrogs [options]
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<-o, --output> C<DIR>
+
+Output directory where to download the Phrogs database.
+By default the Conda environment directory is used.
+
+=item B<--help>
+
+Display this help message.
+
+=cut
+

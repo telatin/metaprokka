@@ -1378,32 +1378,45 @@ for my $sid (@seq) {
 #      $ffn_fh->write_seq($p);      
 #    }
     if ($f->primary_tag eq 'CDS') {
-
+      # Sequence to translate: 
+      # Genetic code: $gcode
       #This is for gcode 15
-      if ($gcode == 15) {
+      my $id = ($f->get_tag_values('ID'))[0];
+      my $product = ($f->get_tag_values('product'))[0] // '';
+      my $nucleotidic_seq = FASTX::Seq->new(
+            -seq => $f->seq->seq,
+            -id => $id,
+      );
+      my $orf = $nucleotidic_seq->translate($gcode);
+      my $seq_obj = Bio::Seq->new(
+        -display_id => $id, 
+        -seq => $orf->seq, 
+        -desc => $product);
+      $faa_fh->write_seq($seq_obj);
+      # if ($gcode == 15) {
         
-        #Translate the sequence and associate it with a new Bio::Seq object
-        my $translated_sequence = translate_with_fifteen_table($f->seq->seq, \%fifteen_codon_table);
-        my $id = ($f->get_tag_values('ID'))[0];
-        my $product = ($f->get_tag_values('product'))[0] // '';
-        my $seq_obj = Bio::Seq->new(-display_id => $id, -seq => $translated_sequence, -desc => $product);
-        $faa_fh->write_seq($seq_obj);
+      #   #Translate the sequence and associate it with a new Bio::Seq object
+      #   my $translated_sequence = translate_with_fifteen_table($f->seq->seq, \%fifteen_codon_table);
+        
+      #   my $product = ($f->get_tag_values('product'))[0] // '';
+      #   my $seq_obj = Bio::Seq->new(-display_id => $id, -seq => $translated_sequence, -desc => $product);
+      #   $faa_fh->write_seq($seq_obj);
       
-      } elsif ($gcode == 4) {
+      # } elsif ($gcode == 4) {
 
-        #This is for gcode 4
-        my $translated_sequence = translate_with_four_table($f->seq->seq, \%four_codon_table);
-        my $id = ($f->get_tag_values('ID'))[0];
-        my $product = ($f->get_tag_values('product'))[0] // '';
-        my $seq_obj = Bio::Seq->new(-display_id => $id, -seq => $translated_sequence, -desc => $product);
-        $faa_fh->write_seq($seq_obj);
+      #   #This is for gcode 4
+      #   my $translated_sequence = translate_with_four_table($f->seq->seq, \%four_codon_table);
+      #   my $id = ($f->get_tag_values('ID'))[0];
+      #   my $product = ($f->get_tag_values('product'))[0] // '';
+      #   my $seq_obj = Bio::Seq->new(-display_id => $id, -seq => $translated_sequence, -desc => $product);
+      #   $faa_fh->write_seq($seq_obj);
       
-      } else {
+      # } else {
 
-        #This is for 11
-        $faa_fh->write_seq( $p->translate(-codontable_id=>11, -complete=>1) );
+      #   #This is for 11
+      #   $faa_fh->write_seq( $p->translate(-codontable_id=>11, -complete=>1) );
       
-      }
+      # }
 
     }
     if ($f->primary_tag =~ m/^(CDS|rRNA|tmRNA|tRNA|misc_RNA)$/) {
