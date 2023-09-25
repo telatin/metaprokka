@@ -20,6 +20,7 @@ GetOptions(
     'f|force'    => \$opt_force,
     'h|help'     => \$opt_help,
     'v|verbose'  => \$opt_verbose,
+    'version'    => sub { say "get-phrogs version 1.0\nPart of metaprokka"; exit 0 },
 ) or pod2usage(2);
 
 pod2usage(1) if $opt_help;
