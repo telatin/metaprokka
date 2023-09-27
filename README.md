@@ -1,4 +1,5 @@
-# 🧫 ♊  MetaProkka: a fork for prokka, optimised for bacteriophages and metagenomes/metaviromes
+# 🧫 ♊  MetaProkka
+### a fork for Prokka, optimised for bacteriophages and metagenomes/metaviromes
 
 [![MetaProkkaGV](https://github.com/telatin/metaprokka/actions/workflows/test.yaml/badge.svg)](https://github.com/telatin/metaprokka/actions/workflows/test.yaml)
 [![Bioconda Downloads](https://img.shields.io/conda/dn/bioconda/metaprokka.svg?style=flat)](https://bioconda.github.io/recipes/metaprokka/README.html)
@@ -13,21 +14,37 @@ viral genomes quickly and produce standards-compliant output files.
 ## Installation (WIP)
 
 ### 
-If you use [Conda](https://conda.io/docs/install/quick.html)
+If you use [_Conda_](https://conda.io/docs/install/quick.html) (or _mamba_)
 you can use the [Bioconda channel](https://bioconda.github.io/):
 
-```
-conda create -n prokka-gv --only-deps -c bioconda prokka
-conda activate prokka-gv
-conda install -c bioconda prodigal-gv perl-fastx-reader
-export PATH=$PWD/bin/
+```bash
+mamba install -c bioconda metaprokka
 ```
 
 ## Usage
-Same as Prokka, but here's a simple example:
+
+### prokka-gv
+
+Prokka with prodigal-gv is called `prokka-gv`, this is particularly useful for
+phage genomes (and will detect the genetic code).
+
+You can download the Phrogs HMM, which will be automatically placed in the conda
+folder.
+
+```bash
+get-phrogs
 ```
-prokka-gv --hmms all_phrogs.hmm --outdir OUT_DIR --prefix PREFIX --locustag LOCUSTAG input.fa --cpus x
+
+and then run `prokka-gv` (which will detect the Phrogs HMM):
+
+```bash
+prokka-gv --outdir OUT_DIR --prefix PREFIX --locustag LOCUSTAG --cpus 16 input.fa 
 ```
+
+### metaprokka
+
+Metaprokka is optimised for metagenomes, is better suited at fragmented assemblies
+and will produce less output files (see wiki)
 
 # Licence
 
