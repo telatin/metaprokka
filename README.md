@@ -18,7 +18,7 @@ If you use [_Conda_](https://conda.io/docs/install/quick.html) (or _mamba_)
 you can use the [Bioconda channel](https://bioconda.github.io/):
 
 ```bash
-mamba install -c bioconda metaprokka
+mamba install -c conda-forge -c bioconda metaprokka
 ```
 
 ## Usage
