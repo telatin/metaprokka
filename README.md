@@ -54,7 +54,9 @@ and will produce less output files (see wiki)
 
 This tool is a modified version of Prokka, so if you use it please cite:
 
-* Seemann T. **Prokka: rapid prokaryotic genome annotation**, Bioinformatics 2014 Jul 15;30(14):2068-9. [PMID:24642063](http://www.ncbi.nlm.nih.gov/pubmed/24642063)
+* Seemann T. (2014) [Prokka: rapid prokaryotic genome annotation]((http://www.ncbi.nlm.nih.gov/pubmed/24642063)), Bioinformatics  
+* Camargo, A. P., et al. (2023). [Identification of mobile genetic elements with geNomad](https://www.nature.com/articles/s41587-023-01953-y). Nature Biotechnology
+* Cook R., et al. (2024), [Driving through stop signs: predicting stop codon reassignment improves functional annotation of bacteriophages](https://doi.org/10.1093/ismeco/ycae079), ISME Communications 
 
 
 ## Authors
